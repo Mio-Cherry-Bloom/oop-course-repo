@@ -15,7 +15,6 @@
         CHOCOLATE,
         POPCORN
     }
-
     public class Coffee
     {
         public Intensity CoffeeIntensity { get; set; }
@@ -45,4 +44,3 @@
         public int MgOfPumpkinSpice { get; set; }
         public const string Name = "PumpkinSpiceLatte";
     }
-
