@@ -1,4 +1,3 @@
-
 namespace CoffeeClasses
 {
     public class Barista
@@ -7,7 +6,7 @@ namespace CoffeeClasses
         {
             List<Coffee> coffeeOrders = new List<Coffee>();
 
-            Console.WriteLine("Welcome to the Coffee Shop!");
+            Console.WriteLine("Welcome to the Maid Cafe!");
 
             while (true)
             {
@@ -62,59 +61,58 @@ namespace CoffeeClasses
                 order.PrintDetails();
                 Console.WriteLine("-----------------------------------------------");
             }
-            Console.WriteLine("Thank you for your orders!");
+            Console.WriteLine("Thank you for visiting our cafe.");
         }
 
-        private Americano OrderAmericano()
+        private Coffee OrderAmericano()
         {
             Console.WriteLine("Ordering an Americano.");
             Intensity intensity = SelectIntensity();
             int mlOfWater = SelectMlOfWater();
             Americano americano = new Americano(intensity, mlOfWater);
-            return americano.MakeAmericano();
+            return (Coffee)americano.MakeAmericano();
         }
 
-        private Cappuccino OrderCappuccino()
+        private Coffee OrderCappuccino()
         {
             Console.WriteLine("Ordering a Cappuccino.");
             Intensity intensity = SelectIntensity();
             int mlOfMilk = SelectMlOfMilk();
             Cappuccino cappuccino = new Cappuccino(intensity, mlOfMilk);
-            return cappuccino.MakeCappuccino();
+            return (Coffee)cappuccino.MakeCappuccino();
         }
 
-        private SyrupCappuccino OrderSyrupCappuccino()
+        private Coffee OrderSyrupCappuccino()
         {
             Console.WriteLine("Ordering a Syrup Cappuccino.");
             Intensity intensity = SelectIntensity();
             int mlOfMilk = SelectMlOfMilk();
             SyrupType syrup = SelectSyrup();
             SyrupCappuccino syrupCappuccino = new SyrupCappuccino(intensity, mlOfMilk, syrup);
-            return syrupCappuccino.MakeSyrupCappuccino();
+            return (Coffee)syrupCappuccino.MakeSyrupCappuccino();
         }
 
-        private PumpkinSpiceLatte OrderPumpkinSpiceLatte()
+        private Coffee OrderPumpkinSpiceLatte()
         {
             Console.WriteLine("Ordering a Pumpkin Spice Latte.");
             Intensity intensity = SelectIntensity();
             int mlOfMilk = SelectMlOfMilk();
             int mgOfPumpkinSpice = SelectMgOfPumpkinSpice();
             PumpkinSpiceLatte pumpkinSpiceLatte = new PumpkinSpiceLatte(intensity, mlOfMilk, mgOfPumpkinSpice);
-            return pumpkinSpiceLatte.MakePumpkinSpiceLatte();
+            return (Coffee)pumpkinSpiceLatte.MakePumpkinSpiceLatte();
         }
-
 
         private Intensity SelectIntensity()
         {
             Console.WriteLine("Select intensity:");
             foreach (Intensity intensity in Enum.GetValues(typeof(Intensity)))
-            {
                 Console.WriteLine($"{(int)intensity + 1}. {intensity}");
-            }
-            Console.WriteLine("Enter your choice: ");
-            int choice = int.Parse(Console.ReadLine()) - 1;
 
-            return (Intensity)choice;
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > Enum.GetValues(typeof(Intensity)).Length)
+                Console.WriteLine("Invalid choice.");
+
+            return (Intensity)(choice - 1);
         }
 
         private int SelectMlOfWater()
@@ -133,13 +131,13 @@ namespace CoffeeClasses
         {
             Console.WriteLine("Select syrup flavor:");
             foreach (SyrupType syrup in Enum.GetValues(typeof(SyrupType)))
-            {
                 Console.WriteLine($"{(int)syrup + 1}. {syrup}");
-            }
-            Console.WriteLine("Enter your choice: ");
-            int choice = int.Parse(Console.ReadLine()) - 1;
 
-            return (SyrupType)choice;
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice < 1 || choice > Enum.GetValues(typeof(SyrupType)).Length)
+                Console.WriteLine("Invalid choice.");
+
+            return (SyrupType)(choice - 1);
         }
 
         private int SelectMgOfPumpkinSpice()
@@ -148,5 +146,4 @@ namespace CoffeeClasses
             return int.Parse(Console.ReadLine());
         }
     }
-
 }
