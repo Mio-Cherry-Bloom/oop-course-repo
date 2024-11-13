@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-2\\Task3\\Task3.csproj": {}
+    "/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task3/Task3.csproj": {}
   },
   "projects": {
-    "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-2\\Task3\\Task3.csproj": {
+    "/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task3/Task3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-2\\Task3\\Task3.csproj",
+        "projectUniqueName": "/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task3/Task3.csproj",
         "projectName": "Task3",
-        "projectPath": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-2\\Task3\\Task3.csproj",
-        "packagesPath": "C:\\Users\\saval\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-2\\Task3\\obj\\",
+        "projectPath": "/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task3/Task3.csproj",
+        "packagesPath": "/Users/sava/.nuget/packages/",
+        "outputPath": "/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task3/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\saval\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/sava/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

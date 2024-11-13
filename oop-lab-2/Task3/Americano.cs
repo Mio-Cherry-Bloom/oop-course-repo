@@ -1,21 +1,22 @@
 public class Americano : Coffee
+{
+    public int MlOfWater { get; set; }
+    public override string Name => "Americano";
+    public Americano(Intensity intensity, int mlOfWater) : base(intensity)
     {
-        public int MlOfWater { get; set; }
-        public const string CoffeeName = "Americano";
-
-        public override void PrintDetails()
-        {
-            base.PrintDetails();
-            Console.WriteLine($" - Type: {CoffeeName}");
-            Console.WriteLine($" - Water: {MlOfWater} ml");
-        }
-
-        public static Americano MakeAmericano(Intensity intensity, int mlOfWater)
-        {
-            Console.WriteLine($"Making {CoffeeName}...");
-            Console.WriteLine($"- Brew the coffee with intensity {intensity}.");
-            Console.WriteLine($"- Add {mlOfWater} ml of hot water.");
-            var americano = new Americano { CoffeeIntensity = intensity, MlOfWater = mlOfWater };
-            return americano;
-        }
+        MlOfWater = mlOfWater;
     }
+    public override void PrintDetails()
+    {
+        base.PrintDetails();
+        Console.WriteLine($" - Water: {MlOfWater} ml");
+    }
+
+    public Americano MakeAmericano()
+    {
+        base.MakeCoffee();
+        Console.WriteLine($"Adding {MlOfWater} ml of water");
+        return this;
+    }
+
+}

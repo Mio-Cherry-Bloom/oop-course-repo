@@ -1,21 +1,22 @@
-﻿
-    class Program
+﻿class Program
+{
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
+        Americano americano = new Americano(Intensity.STRONG, 200);
+        americano.MakeAmericano();
+        Console.WriteLine();
 
-            var cappuccino = Cappuccino.MakeCappuccino(Intensity.NORMAL, 150);
-            cappuccino.PrintDetails();
+        Cappuccino cappuccino = new Cappuccino(Intensity.NORMAL, 150);
+        cappuccino.MakeCappuccino();
+        Console.WriteLine();
 
-            Console.WriteLine();
+        SyrupCappuccino syrupCappuccino = new SyrupCappuccino(Intensity.LIGHT, 120, SyrupType.VANILLA);
+        syrupCappuccino.MakeSyrupCappuccino();
+        Console.WriteLine();
 
-            var pumpkinSpiceLatte = PumpkinSpiceLatte.MakePumpkinSpiceLatte(Intensity.STRONG, 200, 30);
-            pumpkinSpiceLatte.PrintDetails();
+        PumpkinSpiceLatte pumpkinSpiceLatte = new PumpkinSpiceLatte(Intensity.NORMAL, 100, 50);
+        pumpkinSpiceLatte.MakePumpkinSpiceLatte();
 
-            Console.WriteLine();
-
-            var syrupCappuccino = SyrupCappuccino.MakeSyrupCappuccino(Intensity.LIGHT, 100, SyrupType.VANILLA);
-            syrupCappuccino.PrintDetails();
-        }
     }
+}
 

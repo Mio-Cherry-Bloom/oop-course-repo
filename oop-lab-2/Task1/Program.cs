@@ -1,21 +1,4 @@
-﻿
-    public enum Intensity
-    {
-        LIGHT,
-        NORMAL,
-        STRONG
-    }
-
-    public enum SyrupType
-    {
-        MACADAMIA,
-        VANILLA,
-        COCONUT,
-        CARAMEL,
-        CHOCOLATE,
-        POPCORN
-    }
-    public class Coffee
+﻿    public class Coffee
     {
         public Intensity CoffeeIntensity { get; set; }
         public const string Name = "Coffee";

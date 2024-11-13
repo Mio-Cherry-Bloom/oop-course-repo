@@ -1,12 +1,13 @@
-    public class Coffee
+public class Coffee
+{
+    public Intensity CoffeeIntensity { get; set; }
+    public const string Name = "Coffee";
+    public Coffee(Intensity intensity)
     {
-        public Intensity CoffeeIntensity { get; set; }
-        public const string Name = "Coffee";
-
-        public virtual void PrintDetails()
-        {
-            Console.WriteLine($"Coffee Details: ");
-            Console.WriteLine($" - Name: {Name}");
-            Console.WriteLine($" - Intensity: {CoffeeIntensity}");
-        }
+        CoffeeIntensity = intensity;
     }
+    public virtual void PrintDetails()
+    {
+        Console.WriteLine($" - Intensity: {CoffeeIntensity}");
+    }
+}

@@ -1,12 +1,14 @@
-    public class Cappuccino : Coffee
+public class Cappuccino : Coffee
+{
+    public int MlOfMilk { get; set; }
+    public const string Coffee = "Cappuccino";
+    public Cappuccino(Intensity intensity, int mlOfMilk) : base(intensity)
     {
-        public int MlOfMilk { get; set; }
-        public const string Coffee = "Cappuccino";
-
-        public override void PrintDetails()
-        {
-            base.PrintDetails();
-            Console.WriteLine($" - Type: {Coffee}");
-            Console.WriteLine($" - Milk: {MlOfMilk} ml");
-        }
+        MlOfMilk = mlOfMilk;
     }
+    public override void PrintDetails()
+    {
+        base.PrintDetails();
+        Console.WriteLine($" - Milk: {MlOfMilk} ml");
+    }
+}

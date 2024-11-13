@@ -1,0 +1,12 @@
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.AssemblyInfoInputs.cache
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.AssemblyInfo.cs
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.csproj.CoreCompileInputs.cache
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.sourcelink.json
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/bin/Debug/net8.0/CoffeeClasses.deps.json
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/bin/Debug/net8.0/CoffeeClasses.dll
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/bin/Debug/net8.0/CoffeeClasses.pdb
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.dll
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/refint/CoffeeClasses.dll
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/CoffeeClasses.pdb
+/Users/sava/Desktop/oop-course-repo/oop-lab-2/Task4/CoffeeClasses/obj/Debug/net8.0/ref/CoffeeClasses.dll

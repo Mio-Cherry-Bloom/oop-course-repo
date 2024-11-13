@@ -1,26 +1,27 @@
 ﻿
-    public class Barista
+class Program
+{
+    static void Main()
     {
-        public void PrepareCoffee(Coffee coffee)
-        {
-            coffee.PrintDetails();
-        }
-    }
+        Americano americano = new Americano(Intensity.NORMAL, 100);
+        Cappuccino cappuccino = new Cappuccino(Intensity.STRONG, 50);
+        SyrupCappuccino syrupCappuccino = new SyrupCappuccino(Intensity.LIGHT, 40, SyrupType.VANILLA);
+        PumpkinSpiceLatte pumpkinSpiceLatte = new PumpkinSpiceLatte(Intensity.NORMAL, 60, 20);
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Americano americano = new Americano { CoffeeIntensity = Intensity.NORMAL, MlOfWater = 100 };
-            Cappuccino cappuccino = new Cappuccino { CoffeeIntensity = Intensity.STRONG, MlOfMilk = 50 };
-            SyrupCappuccino syrupCappuccino = new SyrupCappuccino { CoffeeIntensity = Intensity.LIGHT, MlOfMilk = 40, Syrup = SyrupType.VANILLA };
-            PumpkinSpiceLatte pumpkinSpiceLatte = new PumpkinSpiceLatte { CoffeeIntensity = Intensity.NORMAL, MlOfMilk = 60, MgOfPumpkinSpice = 20 };
 
-            Barista barista = new Barista();
-            barista.PrepareCoffee(americano);
-            barista.PrepareCoffee(cappuccino);
-            barista.PrepareCoffee(syrupCappuccino);
-            barista.PrepareCoffee(pumpkinSpiceLatte);
-        }
+
+
+        Console.WriteLine("Americano:");
+        americano.PrintDetails();
+        Console.WriteLine();
+        Console.WriteLine("Cappuccino:");
+        cappuccino.PrintDetails();
+        Console.WriteLine();
+        Console.WriteLine("Syrup Cappuccino:");
+        syrupCappuccino.PrintDetails();
+        Console.WriteLine();
+        Console.WriteLine("Pumpkin SpiceLatte:");
+        pumpkinSpiceLatte.PrintDetails();
     }
+}
 
