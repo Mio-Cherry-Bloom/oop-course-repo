@@ -28,10 +28,7 @@ public class CarStation
 
             if (car.IsDining)
             {
-                if (car.Passengers == "PEOPLE" || car.Passengers == "ROBOTS")
-                {
-                    diningService.ServeDinner(car.Id);
-                }
+                diningService.ServeDinner(car.Id);
             }
         }
 

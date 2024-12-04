@@ -1,5 +1,5 @@
 [TestClass]
-public class CarStationTests
+public class SemaphoreTests
 {
     private class MockDineable : IDineable
     {
@@ -22,45 +22,46 @@ public class CarStationTests
     }
 
     [TestMethod]
-    public void TestSingleCar()
+    public void TestGasCarServedByGasStation()
     {
         var mockDining = new MockDineable();
-        var mockRefueling = new MockRefuelable();
-        var carStation = new CarStation(mockDining, mockRefueling);
+        var mockElectricStation = new MockRefuelable();
+        var mockGasStation = new MockRefuelable();
 
-        var car = new Car
-        {
-            Id = "1",
-            Type = "ELECTRIC",
-            Passengers = "PEOPLE",
-            IsDining = true
-        };
+        var electricCarStation = new CarStation(mockDining, mockElectricStation);
+        var gasCarStation = new CarStation(mockDining, mockGasStation);
 
-        carStation.AddCar(car);
-        carStation.ServeCars();
+        var semaphore = new Semaphore(electricCarStation, gasCarStation);
 
-        Assert.AreEqual(1, mockRefueling.RefueledCars.Count);
-        Assert.AreEqual("1", mockRefueling.RefueledCars[0]);
-        Assert.AreEqual(1, mockDining.ServedDinners.Count);
-        Assert.AreEqual("1", mockDining.ServedDinners[0]);
-    }
-
-    [TestMethod]
-    public void TestMultipleCars()
-    {
-        var mockDining = new MockDineable();
-        var mockRefueling = new MockRefuelable();
-        var carStation = new CarStation(mockDining, mockRefueling);
-
-        var car1 = new Car
+        var gasCar = new Car
         {
             Id = "1",
             Type = "GAS",
-            Passengers = "ROBOTS",
-            IsDining = true
+            Passengers = "PEOPLE",
+            IsDining = false
         };
 
-        var car2 = new Car
+        semaphore.RouteCar(gasCar);
+        semaphore.ServeCars();
+
+        Assert.AreEqual(1, mockGasStation.RefueledCars.Count);
+        Assert.AreEqual("1", mockGasStation.RefueledCars[0]);
+        Assert.AreEqual(0, mockElectricStation.RefueledCars.Count);
+    }
+
+    [TestMethod]
+    public void TestElectricCarServedByElectricStation()
+    {
+        var mockDining = new MockDineable();
+        var mockElectricStation = new MockRefuelable();
+        var mockGasStation = new MockRefuelable();
+
+        var electricCarStation = new CarStation(mockDining, mockElectricStation);
+        var gasCarStation = new CarStation(mockDining, mockGasStation);
+
+        var semaphore = new Semaphore(electricCarStation, gasCarStation);
+
+        var electricCar = new Car
         {
             Id = "2",
             Type = "ELECTRIC",
@@ -68,45 +69,38 @@ public class CarStationTests
             IsDining = false
         };
 
-        carStation.AddCar(car1);
-        carStation.AddCar(car2);
-        carStation.ServeCars();
+        semaphore.RouteCar(electricCar);
+        semaphore.ServeCars();
 
-        Assert.AreEqual(2, mockRefueling.RefueledCars.Count);
-        CollectionAssert.AreEqual(new List<string> { "1", "2" }, mockRefueling.RefueledCars);
-        Assert.AreEqual(1, mockDining.ServedDinners.Count);
-        Assert.AreEqual("1", mockDining.ServedDinners[0]);
+        Assert.AreEqual(1, mockElectricStation.RefueledCars.Count);
+        Assert.AreEqual("2", mockElectricStation.RefueledCars[0]);
+        Assert.AreEqual(0, mockGasStation.RefueledCars.Count);
     }
 
     [TestMethod]
-    public void TestNoDiningCars()
+    public void TestDiningCarServedCorrectly()
     {
         var mockDining = new MockDineable();
-        var mockRefueling = new MockRefuelable();
-        var carStation = new CarStation(mockDining, mockRefueling);
+        var mockElectricStation = new MockRefuelable();
+        var mockGasStation = new MockRefuelable();
 
-        var car1 = new Car
-        {
-            Id = "1",
-            Type = "GAS",
-            Passengers = "ROBOTS",
-            IsDining = false
-        };
+        var electricCarStation = new CarStation(mockDining, mockElectricStation);
+        var gasCarStation = new CarStation(mockDining, mockGasStation);
 
-        var car2 = new Car
+        var semaphore = new Semaphore(electricCarStation, gasCarStation);
+
+        var electricCarWithDining = new Car
         {
-            Id = "2",
+            Id = "3",
             Type = "ELECTRIC",
             Passengers = "PEOPLE",
-            IsDining = false
+            IsDining = true
         };
 
-        carStation.AddCar(car1);
-        carStation.AddCar(car2);
-        carStation.ServeCars();
+        semaphore.RouteCar(electricCarWithDining);
+        semaphore.ServeCars();
 
-        Assert.AreEqual(2, mockRefueling.RefueledCars.Count);
-        CollectionAssert.AreEqual(new List<string> { "1", "2" }, mockRefueling.RefueledCars);
-        Assert.AreEqual(0, mockDining.ServedDinners.Count);
+        Assert.AreEqual(1, mockDining.ServedDinners.Count);
+        Assert.AreEqual("3", mockDining.ServedDinners[0]);
     }
 }
