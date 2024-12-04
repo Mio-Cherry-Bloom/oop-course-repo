@@ -1013,32 +1013,34 @@
     ]
   },
   "packageFolders": {
-    "/Users/sava/.nuget/packages/": {}
+    "C:\\Users\\saval\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/sava/Desktop/oop-course-repo/oop-lab-3/Test/Test.csproj",
+      "projectUniqueName": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-3\\Test\\Test.csproj",
       "projectName": "Test",
-      "projectPath": "/Users/sava/Desktop/oop-course-repo/oop-lab-3/Test/Test.csproj",
-      "packagesPath": "/Users/sava/.nuget/packages/",
-      "outputPath": "/Users/sava/Desktop/oop-course-repo/oop-lab-3/Test/obj/",
+      "projectPath": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-3\\Test\\Test.csproj",
+      "packagesPath": "C:\\Users\\saval\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-3\\Test\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/Users/sava/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\saval\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "/Users/sava/Desktop/oop-course-repo/oop-lab-3/CarService/CarService.csproj": {
-              "projectPath": "/Users/sava/Desktop/oop-course-repo/oop-lab-3/CarService/CarService.csproj"
+            "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-3\\CarService\\CarService.csproj": {
+              "projectPath": "C:\\Users\\saval\\Desktop\\oop-course-repo\\oop-lab-3\\CarService\\CarService.csproj"
             }
           }
         }
@@ -1091,7 +1093,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
