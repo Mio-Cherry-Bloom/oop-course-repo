@@ -1,68 +1,112 @@
-namespace CarServiceTests
+[TestClass]
+public class CarStationTests
 {
-    [TestClass]
-    public class CarServiceStationTests
+    private class MockDineable : IDineable
     {
-        [TestMethod]
-        public void TestElectricCarServed()
+        public List<string> ServedDinners = new List<string>();
+
+        public void ServeDinner(string carId)
         {
-            IDineable dineService = new PeopleDinner();
-            IRefuelable fuelService = new ElectricStation();
-            var station = new CarServiceStation(dineService, fuelService);
-
-            station.ServeCar("1", "ELECTRIC", "PEOPLE", true);
-
-            Assert.AreEqual(1, station.GetElectricCarsServed());
-            Assert.AreEqual(0, station.GetGasCarsServed());
-            Assert.AreEqual(1, station.GetPeopleServed());
-            Assert.AreEqual(0, station.GetRobotsServed());
+            ServedDinners.Add(carId);
         }
+    }
 
-        [TestMethod]
-        public void TestGasCarServed()
+    private class MockRefuelable : IRefuelable
+    {
+        public List<string> RefueledCars = new List<string>();
+
+        public void Refuel(string carId)
         {
-            IDineable dineService = new RobotDinner();
-            IRefuelable fuelService = new GasStation();
-            var station = new CarServiceStation(dineService, fuelService);
-
-            station.ServeCar("2", "GAS", "ROBOTS", true);
-
-            Assert.AreEqual(0, station.GetElectricCarsServed());
-            Assert.AreEqual(1, station.GetGasCarsServed());
-            Assert.AreEqual(0, station.GetPeopleServed());
-            Assert.AreEqual(1, station.GetRobotsServed());
+            RefueledCars.Add(carId);
         }
+    }
 
-        [TestMethod]
-        public void TestNoDining()
+    [TestMethod]
+    public void TestSingleCar()
+    {
+        var mockDining = new MockDineable();
+        var mockRefueling = new MockRefuelable();
+        var carStation = new CarStation(mockDining, mockRefueling);
+
+        var car = new Car
         {
-            IDineable dineService = new PeopleDinner();
-            IRefuelable fuelService = new ElectricStation();
-            var station = new CarServiceStation(dineService, fuelService);
+            Id = "1",
+            Type = "ELECTRIC",
+            Passengers = "PEOPLE",
+            IsDining = true
+        };
 
-            station.ServeCar("3", "ELECTRIC", "PEOPLE", false);
+        carStation.AddCar(car);
+        carStation.ServeCars();
 
-            Assert.AreEqual(1, station.GetElectricCarsServed());
-            Assert.AreEqual(0, station.GetGasCarsServed());
-            Assert.AreEqual(0, station.GetPeopleServed());
-            Assert.AreEqual(0, station.GetRobotsServed());
-        }
+        Assert.AreEqual(1, mockRefueling.RefueledCars.Count);
+        Assert.AreEqual("1", mockRefueling.RefueledCars[0]);
+        Assert.AreEqual(1, mockDining.ServedDinners.Count);
+        Assert.AreEqual("1", mockDining.ServedDinners[0]);
+    }
 
-        [TestMethod]
-        public void TestMixedService()
+    [TestMethod]
+    public void TestMultipleCars()
+    {
+        var mockDining = new MockDineable();
+        var mockRefueling = new MockRefuelable();
+        var carStation = new CarStation(mockDining, mockRefueling);
+
+        var car1 = new Car
         {
-            IDineable dineService = new RobotDinner();
-            IRefuelable fuelService = new GasStation();
-            var station = new CarServiceStation(dineService, fuelService);
+            Id = "1",
+            Type = "GAS",
+            Passengers = "ROBOTS",
+            IsDining = true
+        };
 
-            station.ServeCar("4", "GAS", "ROBOTS", true);
-            station.ServeCar("5", "ELECTRIC", "PEOPLE", true);
-            station.ServeCar("6", "GAS", "PEOPLE", false);
+        var car2 = new Car
+        {
+            Id = "2",
+            Type = "ELECTRIC",
+            Passengers = "PEOPLE",
+            IsDining = false
+        };
 
-            Assert.AreEqual(1, station.GetElectricCarsServed());
-            Assert.AreEqual(2, station.GetGasCarsServed());
-            Assert.AreEqual(1, station.GetPeopleServed());
-            Assert.AreEqual(1, station.GetRobotsServed());
-        }
+        carStation.AddCar(car1);
+        carStation.AddCar(car2);
+        carStation.ServeCars();
+
+        Assert.AreEqual(2, mockRefueling.RefueledCars.Count);
+        CollectionAssert.AreEqual(new List<string> { "1", "2" }, mockRefueling.RefueledCars);
+        Assert.AreEqual(1, mockDining.ServedDinners.Count);
+        Assert.AreEqual("1", mockDining.ServedDinners[0]);
+    }
+
+    [TestMethod]
+    public void TestNoDiningCars()
+    {
+        var mockDining = new MockDineable();
+        var mockRefueling = new MockRefuelable();
+        var carStation = new CarStation(mockDining, mockRefueling);
+
+        var car1 = new Car
+        {
+            Id = "1",
+            Type = "GAS",
+            Passengers = "ROBOTS",
+            IsDining = false
+        };
+
+        var car2 = new Car
+        {
+            Id = "2",
+            Type = "ELECTRIC",
+            Passengers = "PEOPLE",
+            IsDining = false
+        };
+
+        carStation.AddCar(car1);
+        carStation.AddCar(car2);
+        carStation.ServeCars();
+
+        Assert.AreEqual(2, mockRefueling.RefueledCars.Count);
+        CollectionAssert.AreEqual(new List<string> { "1", "2" }, mockRefueling.RefueledCars);
+        Assert.AreEqual(0, mockDining.ServedDinners.Count);
     }
 }
