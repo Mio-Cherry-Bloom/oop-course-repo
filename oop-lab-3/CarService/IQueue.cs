@@ -1,3 +1,4 @@
+namespace CarService{
 public interface IQueue<T>
 {
     void Enqueue(T item);
@@ -5,4 +6,5 @@ public interface IQueue<T>
     T Peek();
     bool IsEmpty();
     int Size();
+}
 }

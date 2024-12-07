@@ -1,3 +1,4 @@
+namespace CarService{
 public class LinkedListQueue<T> : IQueue<T>
 {
     private class Node
@@ -72,4 +73,5 @@ public class LinkedListQueue<T> : IQueue<T>
     {
         return _size;
     }
+}
 }

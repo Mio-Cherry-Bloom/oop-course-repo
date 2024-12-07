@@ -7,8 +7,8 @@ import shutil
 # Constants, change something here, the whole program changes:)
 OUTPUT_DIR = "queue"
 NR_OF_GENERATIONS = 30  # TODO change back to 30
-MIN_WAIT = 500  # in ms
-MAX_WAIT = 3000  # in ms
+MIN_WAIT = 50  # in ms
+MAX_WAIT = 300  # in ms
 SECOND = 1000.0
 
 # Car properties TODO maybe add more in the future year

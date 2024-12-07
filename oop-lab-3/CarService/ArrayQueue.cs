@@ -1,3 +1,4 @@
+namespace CarService{
 public class ArrayQueue<T> : IQueue<T>
 {
     private T[] _items;
@@ -54,4 +55,5 @@ public class ArrayQueue<T> : IQueue<T>
     {
         return _size;
     }
+}
 }

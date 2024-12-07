@@ -1,29 +1,61 @@
-public class Semaphore
+using System.Text.Json;
+
+namespace CarService
 {
-    private readonly CarStation electricCarStation;
-    private readonly CarStation gasCarStation;
-
-    public Semaphore(CarStation electricCarStation, CarStation gasCarStation)
+    public class Semaphore
     {
-        this.electricCarStation = electricCarStation;
-        this.gasCarStation = gasCarStation;
-    }
+        private CarStation electricPeopleStation;
+        private CarStation electricRobotStation;
+        private CarStation gasPeopleStation;
+        private CarStation gasRobotStation;
 
-    public void RouteCar(Car car)
-    {
-        if (car.Type == "ELECTRIC")
+        public Semaphore(
+            CarStation electricPeopleStation,
+            CarStation electricRobotStation,
+            CarStation gasPeopleStation,
+            CarStation gasRobotStation)
         {
-            electricCarStation.AddCar(car);
+            this.electricPeopleStation = electricPeopleStation;
+            this.electricRobotStation = electricRobotStation;
+            this.gasPeopleStation = gasPeopleStation;
+            this.gasRobotStation = gasRobotStation;
         }
-        else if (car.Type == "GAS")
-        {
-            gasCarStation.AddCar(car);
-        }
-    }
 
-    public void ServeCars()
-    {
-        electricCarStation.ServeCars();
-        gasCarStation.ServeCars();
+        public void GuideCar(string carJson)
+        {
+            var car = JsonSerializer.Deserialize<Car>(carJson);
+
+            if (car == null)
+                throw new ArgumentException("Invalid car JSON data.");
+
+            if (car.Type == "ELECTRIC" && car.PassengerType == "PEOPLE")
+            {
+                electricPeopleStation.AddCar(car);
+            }
+            else if (car.Type == "ELECTRIC" && car.PassengerType == "ROBOTS")
+            {
+                electricRobotStation.AddCar(car);
+            }
+            else if (car.Type == "GAS" && car.PassengerType == "PEOPLE")
+            {
+                gasPeopleStation.AddCar(car);
+            }
+            else if (car.Type == "GAS" && car.PassengerType == "ROBOTS")
+            {
+                gasRobotStation.AddCar(car);
+            }
+            else
+            {
+                throw new InvalidOperationException("Unsupported car type or passenger type.");
+            }
+        }
+
+        public void ServeAllStations()
+        {
+            electricPeopleStation.ServeCars();
+            electricRobotStation.ServeCars();
+            gasPeopleStation.ServeCars();
+            gasRobotStation.ServeCars();
+        }
     }
 }

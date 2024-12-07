@@ -25,3 +25,6 @@ C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\bin\Debug\net8.0\Car
 C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\bin\Debug\net8.0\CarService.dll
 C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\bin\Debug\net8.0\CarService.pdb
 C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\obj\Debug\net8.0\ref\CarService.dll
+C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\bin\Debug\net8.0\CarService.exe
+C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\bin\Debug\net8.0\CarService.runtimeconfig.json
+C:\Users\saval\Desktop\oop-course-repo\oop-lab-3\CarService\obj\Debug\net8.0\CarService.genruntimeconfig.cache
