@@ -1,9 +1,5 @@
-using System;
-using System.IO;
-using System.Linq;
 using System.Text.Json;
-using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace CarService
 {
@@ -115,7 +111,7 @@ int totalRobots= electricPeopleStation.robotsCount + electricRobotStation.robots
                     }
                 }
 
-                await Task.Delay(5000);
+                await Task.Delay(2000);
             }
         }
 
@@ -124,7 +120,7 @@ int totalRobots= electricPeopleStation.robotsCount + electricRobotStation.robots
             while (running)
             {
                 semaphore.ServeAllStations();
-                await Task.Delay(5000);
+                await Task.Delay(2000);
             }
         }
     }
